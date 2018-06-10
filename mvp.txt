@@ -1,0 +1,21 @@
+Planning Your Minimum Viable Product
+
+1. Identify and Understand The Business Needs
+
+a) Determine the long-term goal of the product and write it down:
+ Website to allow user to schedule a cron (continues) event with a start time, end time, and interval with the ability to cancel.
+b) b) Answer the question “Why are we doing this project?”:
+    This product does not yet exist.
+c) Identify the success criteria that will indicate whether or not the          product is successful:
+    To have a running app with user friendly experience that the user can schedule POST request, text messege, and email.
+
+2. Find The Opportunities
+a) Summarize the pains and gains into opportunity statements
+Anyone who wants to use the service, must create a profile, schedule one of our tasks. They will then have their task run at the given interval until they either cancel the task or it reached the end time.
+
+3. Decide What Features To Build
+
+a) Index page - Basic info about the site, our services, and login/register.
+b) Home page - List of tasks available to schedule, view running tasks. Links to modify, cancel task and history.
+
+
