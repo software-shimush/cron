@@ -1,3 +1,4 @@
+{{-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"> --}}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
 
     <div class="container">
@@ -41,6 +42,12 @@
                                 @csrf
                             </form>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ __('Scheduled Tasks') }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ __('History') }}</a>
                     </li>
                 @endguest
             </ul>
