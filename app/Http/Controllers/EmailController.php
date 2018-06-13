@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\JobModel;
 class EmailController extends Controller
 {
            /**
@@ -23,7 +23,8 @@ class EmailController extends Controller
      */
     public function index()
     {
-        //
+        $job = JobModel::all();
+        echo $job;
     }
 
     /**
@@ -44,7 +45,29 @@ class EmailController extends Controller
      */
     public function store(Request $request)
     {
-        echo "form works";
+        $sname = $_POST['sname'];
+        $rname =  $_POST['rname'];
+        $remail = $_POST['remail'];
+        $sdate = $_POST['sdate'];
+        $edate = $_POST['edate'];
+        $intDay = $_POST['intDay'];
+        $intHour = $_POST['intHour'];
+        $intMin = $_POST['intMin'];
+        $msg = $_POST['msg'];
+
+        $job = new JobModel;
+        $job->sender_name = $sname;
+        $job->recipient_name = $rname;
+        $job->start_time = $sdate;
+        $job->end_time = $edate;
+        $job->interval = $intDay;
+        $job->message = $msg;
+        $job->status = 'active';
+        $job->type = 'email';
+        $job->destination = $remail;
+        $job->save();
+
+        echo "sucessfuly added job";
     }
 
     /**
