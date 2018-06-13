@@ -7,7 +7,8 @@
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-sm-10 col-lg-6">
-            <form>
+            <form action="/text" method="POST">
+                @csrf
                 <div class="form-group">
                     <label for="sname">Senders Name</label>
                     <input type="text" class="form-control" id="sname" placeholder="Enter Senders Name">
@@ -47,6 +48,7 @@
                     <label for="msg">Message</label>
                     <textarea class="form-control" id="msg" rows="4"></textarea>
                 </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>

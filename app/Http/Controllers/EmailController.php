@@ -44,7 +44,7 @@ class EmailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        echo "form works";
     }
 
     /**
