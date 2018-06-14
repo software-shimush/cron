@@ -31,15 +31,15 @@
                 </div>
                 How Often
                 <div class="form-row justify-content-md-center">
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-sm-2">
                         <label for="intDay">Days</label>
                         <input type="number" class="form-control" id="intDay" name="intDay">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-sm-2">
                         <label for="intHour">Hours</label>
                         <input type="number" class="form-control" id="intHour" name="intHour">
                     </div>
-                    <div class="form-group col-md-2">
+                    <div class="form-group col-sm-2">
                         <label for="intMin">Minutes</label>
                         <input type="number" class="form-control" id="intMin" name="intMin">
                     </div>
@@ -50,7 +50,18 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            {{--
+            <form id="form">
+                @csrf
+                <div class="form-group col-md-2">
+                    <label for="id">Delete</label>
+                    <input type="text" class="form-control" id="id">
+                </div>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form> --}}
         </div>
     </div>
 </div>
+{{--
+<script src="{{ asset('js/form.js') }}" defer></script> --}}
 @endsection
