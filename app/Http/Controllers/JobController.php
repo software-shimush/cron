@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\JobModel;
 
 class JobController extends Controller
@@ -14,7 +15,8 @@ class JobController extends Controller
      */
     public function index()
     {
-        $jobs = JobModel::all();
+        $id = Auth::id();
+        $jobs = JobModel::all()->where('user_id', $id);
         return view('jobs.job')->with('jobs',  $jobs);
     }
 
@@ -25,7 +27,8 @@ class JobController extends Controller
      */
     public function create()
     {
-        //
+        $type = $_GET['type'];
+        return view('jobs.form')->with('type', $type);
     }
 
     /**
@@ -36,7 +39,31 @@ class JobController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sname = $_POST['sname'];
+        $rname =  $_POST['rname'];
+        $destination = $_POST['destination'];
+        $sdate = $_POST['sdate'];
+        $edate = $_POST['edate'];
+        $intDay = $_POST['intDay'];
+        $intHour = $_POST['intHour'];
+        $intMin = $_POST['intMin'];
+        $msg = $_POST['msg'];
+        $type = $_POST['type'];
+
+        $job = new JobModel;
+        $job->sender_name = $sname;
+        $job->recipient_name = $rname;
+        $job->start_time = $sdate;
+        $job->end_time = $edate;
+        $job->interval = $intDay;
+        $job->message = $msg;
+        $job->status = 'active';
+        $job->type = $type;
+        $job->destination = $destination;
+        $job->user_id = $user = Auth::id();
+        $job->save();
+
+        echo "sucessfuly added job";
     }
 
     /**

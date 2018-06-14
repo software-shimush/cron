@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-sm-10 col-lg-6">
-            <form action="/text" method="POST">
+            <form action="/jobs" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="sname">Senders Name</label>
@@ -17,9 +17,7 @@
                     <label for="rname">Recipient Name</label>
                     <input type="text" class="form-control" id="rname" placeholder="Enter Recipient Name" name="rname">
                 </div>
-                <div class="form-group">
-                    <label for="rnum">Recipient Number</label>
-                    <input type="text" class="form-control" id="rnum" placeholder="Enter Recipient Number" name="rnum">
+                <div class="form-group" id="typeInput">
                 </div>
                 <div class="form-group">
                     <label for="sdate">Start Date</label>
@@ -48,20 +46,15 @@
                     <label for="msg">Message</label>
                     <textarea class="form-control" id="msg" rows="4" name="msg"></textarea>
                 </div>
+                <input type="hidden" name="type" value={{ $type }}>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-            {{--
-            <form id="form">
-                @csrf
-                <div class="form-group col-md-2">
-                    <label for="id">Delete</label>
-                    <input type="text" class="form-control" id="id">
-                </div>
-                <button type="submit" class="btn btn-danger">Delete</button>
-            </form> --}}
+            <script>
+                const type = "{{ $type }}";
+            </script>
         </div>
     </div>
 </div>
-{{--
-<script src="{{ asset('js/form.js') }}" defer></script> --}}
+
+<script src="{{ asset('js/form.js') }}" defer></script>
 @endsection
