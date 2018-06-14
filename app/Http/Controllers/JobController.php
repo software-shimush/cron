@@ -5,18 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\JobModel;
 
-class TextController extends Controller
+class JobController extends Controller
 {
-       /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
-    
     /**
      * Display a listing of the resource.
      *
@@ -24,8 +14,8 @@ class TextController extends Controller
      */
     public function index()
     {
-        $job = JobModel::all();
-        echo $job;
+        $jobs = JobModel::all();
+        return view('jobs.job')->with('jobs',  $jobs);
     }
 
     /**
@@ -35,7 +25,7 @@ class TextController extends Controller
      */
     public function create()
     {
-        return view('jobs.text');
+        //
     }
 
     /**
@@ -46,30 +36,7 @@ class TextController extends Controller
      */
     public function store(Request $request)
     {
-        $sname = $_POST['sname'];
-        $rname =  $_POST['rname'];
-        $rnum = $_POST['rnum'];
-        $sdate = $_POST['sdate'];
-        $edate = $_POST['edate'];
-        $intDay = $_POST['intDay'];
-        $intHour = $_POST['intHour'];
-        $intMin = $_POST['intMin'];
-        $msg = $_POST['msg'];
-
-        $job = new JobModel;
-        $job->sender_name = $sname;
-        $job->recipient_name = $rname;
-        $job->start_time = $sdate;
-        $job->end_time = $edate;
-        $job->interval = $intDay;
-        $job->message = $msg;
-        $job->status = 'active';
-        $job->type = 'text';
-        $job->destination = $rnum;
-        $job->save();
-
-        echo "sucessfuly added job";
-
+        //
     }
 
     /**
