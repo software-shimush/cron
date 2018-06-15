@@ -41,7 +41,8 @@ class JobController extends Controller
      * @param  StoreJob  $request
      * @return Response
      */
-    public function store(StoreJob $request)
+    // public function store(StoreJob $request)
+    public function store(Request $request)
     {
         $validated = $request->validated();
 

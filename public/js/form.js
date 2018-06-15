@@ -5,6 +5,8 @@
     const typeInput = $("#typeInput");
     const howOften = $("#howOften");
     const often = $("input:radio[name='interval']");
+    const howMany = $("#howMany");
+    howOften.hide();
 
     switch (type) {
         case "text":
@@ -22,42 +24,17 @@
 
     often.change(() => {
         let oftenSelected = $("input:radio[name='interval']:checked").val();
-
-        howOften.append(`
-            <div class="form-row justify-content-md-center">
-                <div class="form-group col-sm-2">
-                    <label for="startTime">Start Time</label>
-                    <input type="time" class="form-control" id="startTime" name="startTime">
-                </div>
-        `);
         switch (oftenSelected) {
             case "daily":
-                howOften.append(`
-                <div class="form-group col-sm-2">
-                    <label for="intHour">Every How Many Days?</label>
-                    <input type="number" class="form-control" id="intHour" name="intDays">
-                </div>
-            </div>
-            `);
+                howMany.text("Every How Many Days");
                 break;
             case "hourly":
-                howOften.append(`
-                <div class="form-group col-sm-2">
-                    <label for="intHour">Every How Many Hours?</label>
-                    <input type="number" class="form-control" id="intHour" name="intDays">
-                </div>
-            </div>
-        `);
+                howMany.text("Every How Many Hours");
                 break;
             case "min":
-                howOften.append(`
-                <div class="form-group col-sm-2">
-                    <label for="intHour">Every How Many Minutes?</label>
-                    <input type="number" class="form-control" id="intHour" name="intDays">
-                </div>
-            </div>
-        `);
+                howMany.text("Every How Many Minutes");
                 break;
         }
+        howOften.show();
     });
 })();

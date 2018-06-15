@@ -21,11 +21,11 @@
                 </div>
                 <div class="form-group">
                     <label for="sdate">Start Date</label>
-                    <input type="datetime-local" class="form-control" id="sdate" name="sdate">
+                    <input type="date" class="form-control" id="sdate" name="sdate">
                 </div>
                 <div class="form-group">
                     <label for="edate">End Date</label>
-                    <input type="datetime-local" class="form-control" id="edate" name="edate">
+                    <input type="date" class="form-control" id="edate" name="edate">
                 </div>
                 How Often
                 <div id="often">
@@ -42,7 +42,16 @@
                         <label class="custom-control-label" for="min">Minute</label>
                     </div>
                 </div>
-                <div id="howOften"></div>
+                <div class="form-row" id="howOften">
+                    <div class="form-group col-sm-2">
+                        <label for="startTime">Start Time</label>
+                        <input type="time" class="form-control" id="startTime" name="startTime">
+                    </div>
+                    <div class="form-group col-sm-4">
+                        <label for="intervalInput"><span id="howMany"></span></label>
+                        <input type="number" class="form-control" id="intervalInput" name="intervalInput">
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="msg">Message</label>
                     <textarea class="form-control" id="msg" rows="4" name="msg"></textarea>
@@ -51,11 +60,11 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
             <script>
-                const type = "{{ $type }}";
+                const type ="{{ $type }}";
             </script>
         </div>
     </div>
 </div>
 
-<script src="{{ asset('js/form.js') }}" defer></script>
+<script src="{{ asset( 'js/form.js') }}" defer></script>
 @endsection
