@@ -1,20 +1,20 @@
+/* globals type */
 (function() {
     "use strict";
-    const form = $("#form");
 
-    form.submit(event => {
-        event.preventDefault();
-        const id = $("#id").val();
-        $.ajax({
-            type: "DELETE",
-            url: `/text/${id}`,
-            headers: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
-            },
-            success: success => {
-                console.log(success);
-            }
-        });
-        console.log(id);
-    });
+    const typeInput = $("#typeInput");
+    console.log(type);
+    switch (type) {
+        case "text":
+            typeInput.append(`<label for="destination">Recipient Number</label>
+                    <input type="text" class="form-control" id="destination" placeholder="Enter Recipient Number" name="destination">`);
+            break;
+        case "email":
+            typeInput.append(`<label for="destination">Recipient Email</label>
+                    <input type="email" class="form-control" id="destination" placeholder="Enter Recipient Email" name="destination">`);
+            break;
+        case "post":
+            typeInput.append(`<label for="destination">Url</label>
+                    <input type="url" class="form-control" id="destination" placeholder="Enter A Valid Url" name="destination">`);
+    }
 })();
