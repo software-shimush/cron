@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreJob;
 use App\JobModel;
 
 class JobController extends Controller
@@ -25,41 +26,39 @@ class JobController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $type = $_GET['type'];
-        return view('jobs.form')->with('type', $type);
+        if(!empty($request->input('type'))){
+            $type = $request->input('type');
+            return view('jobs.form')->with('type', $type);
+        }
+        return view('home');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  StoreJob  $request
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(StoreJob $request)
     {
-        $sname = $_POST['sname'];
-        $rname =  $_POST['rname'];
-        $destination = $_POST['destination'];
-        $sdate = $_POST['sdate'];
-        $edate = $_POST['edate'];
-        $intDay = $_POST['intDay'];
-        $intHour = $_POST['intHour'];
-        $intMin = $_POST['intMin'];
-        $msg = $_POST['msg'];
-        $type = $_POST['type'];
+        $validated = $request->validated();
+
+        $intDay = $request->input('intDay');
+        $intHour = $request->input('intHour');
+        $intMin = $request->input('intMin');
 
         $job = new JobModel;
-        $job->sender_name = $sname;
-        $job->recipient_name = $rname;
-        $job->start_time = $sdate;
-        $job->end_time = $edate;
+        $job->sender_name = $request->input('sname');
+        $job->recipient_name = $request->input('rname');
+        $job->start_time = $request->input('sdate');
+        $job->end_time = $request->input('edate');
         $job->interval = $intDay;
-        $job->message = $msg;
+        $job->message = $request->input('msg');
         $job->status = 'active';
-        $job->type = $type;
-        $job->destination = $destination;
+        $job->type = $request->input('type');
+        $job->destination = $request->input('destination');
         $job->user_id = $user = Auth::id();
         $job->save();
 

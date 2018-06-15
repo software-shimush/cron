@@ -28,20 +28,21 @@
                     <input type="datetime-local" class="form-control" id="edate" name="edate">
                 </div>
                 How Often
-                <div class="form-row justify-content-md-center">
-                    <div class="form-group col-sm-2">
-                        <label for="intDay">Days</label>
-                        <input type="number" class="form-control" id="intDay" name="intDay">
+                <div id="often">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="daily" name="interval" class="custom-control-input" value="daily">
+                        <label class="custom-control-label" for="daily">Daily</label>
                     </div>
-                    <div class="form-group col-sm-2">
-                        <label for="intHour">Hours</label>
-                        <input type="number" class="form-control" id="intHour" name="intHour">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="hourly" name="interval" class="custom-control-input" value="hourly">
+                        <label class="custom-control-label" for="hourly">Hourly</label>
                     </div>
-                    <div class="form-group col-sm-2">
-                        <label for="intMin">Minutes</label>
-                        <input type="number" class="form-control" id="intMin" name="intMin">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="min" name="interval" class="custom-control-input" value="min">
+                        <label class="custom-control-label" for="min">Minute</label>
                     </div>
                 </div>
+                <div id="howOften"></div>
                 <div class="form-group">
                     <label for="msg">Message</label>
                     <textarea class="form-control" id="msg" rows="4" name="msg"></textarea>
