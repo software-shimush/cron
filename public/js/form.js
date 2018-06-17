@@ -4,7 +4,7 @@
 
     const typeInput = $("#typeInput");
     const howOften = $("#howOften");
-    const often = $("input:radio[name='interval']");
+    const radioButton = $("input:radio[name='intervalType']");
     const howMany = $("#howMany");
     howOften.hide();
 
@@ -22,8 +22,8 @@
                     <input type="url" class="form-control" id="destination" placeholder="Enter A Valid Url" name="destination">`);
     }
 
-    often.change(() => {
-        let oftenSelected = $("input:radio[name='interval']:checked").val();
+    radioButton.change(() => {
+        let oftenSelected = $("input:radio[name='intervalType']:checked").val();
         switch (oftenSelected) {
             case "daily":
                 howMany.text("Every How Many Days");

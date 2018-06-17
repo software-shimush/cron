@@ -28,26 +28,24 @@
                     <input type="date" class="form-control" id="edate" name="edate">
                 </div>
                 How Often
-                <div id="often">
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="daily" name="interval" class="custom-control-input" value="daily">
+                        <input type="radio" id="daily" name="intervalType" class="custom-control-input" value="daily">
                         <label class="custom-control-label" for="daily">Daily</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="hourly" name="interval" class="custom-control-input" value="hourly">
+                        <input type="radio" id="hourly" name="intervalType" class="custom-control-input" value="hourly">
                         <label class="custom-control-label" for="hourly">Hourly</label>
                     </div>
                     <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="min" name="interval" class="custom-control-input" value="min">
+                        <input type="radio" id="min" name="intervalType" class="custom-control-input" value="min">
                         <label class="custom-control-label" for="min">Minute</label>
                     </div>
-                </div>
                 <div class="form-row" id="howOften">
-                    <div class="form-group col-sm-2">
+                    <div class="form-group col-sm-4">
                         <label for="startTime">Start Time</label>
                         <input type="time" class="form-control" id="startTime" name="startTime">
                     </div>
-                    <div class="form-group col-sm-4">
+                    <div class="form-group col-sm-5">
                         <label for="intervalInput"><span id="howMany"></span></label>
                         <input type="number" class="form-control" id="intervalInput" name="intervalInput">
                     </div>

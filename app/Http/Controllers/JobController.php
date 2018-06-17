@@ -41,21 +41,19 @@ class JobController extends Controller
      * @param  StoreJob  $request
      * @return Response
      */
-    // public function store(StoreJob $request)
-    public function store(Request $request)
+    public function store(StoreJob $request)
     {
         $validated = $request->validated();
 
-        $intDay = $request->input('intDay');
-        $intHour = $request->input('intHour');
-        $intMin = $request->input('intMin');
+        $intervalInput = $request->input('intervalInput');
 
         $job = new JobModel;
         $job->sender_name = $request->input('sname');
         $job->recipient_name = $request->input('rname');
-        $job->start_time = $request->input('sdate');
-        $job->end_time = $request->input('edate');
-        $job->interval = $intDay;
+        $job->start_date = $request->input('sdate');
+        $job->end_date = $request->input('edate');
+        $job->start_time = $request->input('startTime');
+        // $job->interval = $request->input('intervalInput');
         $job->message = $request->input('msg');
         $job->status = 'active';
         $job->type = $request->input('type');
