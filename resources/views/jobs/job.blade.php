@@ -26,9 +26,9 @@
                         <li class="list-group-item">Receiver Name: {{ $job->recipient_name }}</li>
                         <li class="list-group-item">Address: {{ $job->destination }}</li>
                         <li class="list-group-item">Receiver Name: {{ $job->recipient_name }}</li>
-                        <li class="list-group-item">Start Date: {{ $job->start_time }}</li>
-                        <li class="list-group-item">End Date: {{ $job->end_time }}</li>
-                        <li class="list-group-item">Interval: TODO</li>
+                        <li class="list-group-item">Start Date: {{ $job->start_date }}</li>
+                        <li class="list-group-item">End Date: {{ $job->end_date }}</li>
+                        <li class="list-group-item">Interval: {{ $job->interval }}</li>
                     </ul>
                     <p class="card-text">{{ $job->message }}</p>
                     <div class="d-flex align-content-start justify-content-md-between">

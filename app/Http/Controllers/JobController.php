@@ -53,7 +53,7 @@ class JobController extends Controller
         $job->start_date = $request->input('sdate');
         $job->end_date = $request->input('edate');
         $job->start_time = $request->input('startTime');
-        // $job->interval = $request->input('intervalInput');
+        $job->interval = "55555555";
         $job->message = $request->input('msg');
         $job->status = 'active';
         $job->type = $request->input('type');
