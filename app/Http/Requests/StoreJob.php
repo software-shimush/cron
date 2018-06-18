@@ -29,9 +29,6 @@ class StoreJob extends FormRequest
             'destination' => 'required',
             'sdate' => 'required',
             'edate' => 'required',
-            'intDay' => 'required',
-            'intHour' => 'required',
-            'intMin' => 'required',
             'msg' => 'required'
         ];
     }

@@ -17,9 +17,11 @@ class CreateJobModelsTable extends Migration
             $table->increments('id');
             $table->string('sender_name');
             $table->string('recipient_name');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');	
-            $table->integer('interval');
+            $table->integer('user_id');
+            $table->date('start_date');
+            $table->date('end_date');	
+            $table->time('start_time');	
+            $table->string('interval');
             $table->text('message');
             $table->enum('status', ['active', 'inactive','completed','deleted']);
             $table->enum('type', ['text', 'email','post']);
