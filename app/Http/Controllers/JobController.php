@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreJob;
 use App\JobModel;
+use Carbon\Carbon;
 
 class JobController extends Controller
 {
@@ -41,11 +42,18 @@ class JobController extends Controller
      * @param  StoreJob  $request
      * @return Response
      */
-    public function store(StoreJob $request)
+    // public function store(StoreJob $request)
+    public function store(Request $request)
     {
-        $validated = $request->validated();
 
         $intervalInput = $request->input('intervalInput');
+        $intervalType = $request->input('intervalType');
+        $startDate = $request->input('sdate');
+        $startTime = $request->input('startTime') . ":00";
+        $dateTime = $startDate . " " . $startTime;
+
+        // $this->setInterval($dateTime, $intervalInput, $intervalType);
+        $interval = $this->calculateMin($intervalType, $intervalInput);
 
         $job = new JobModel;
         $job->sender_name = $request->input('sname');
@@ -53,7 +61,7 @@ class JobController extends Controller
         $job->start_date = $request->input('sdate');
         $job->end_date = $request->input('edate');
         $job->start_time = $request->input('startTime');
-        $job->interval = "55555555";
+        $job->interval = $interval;
         $job->message = $request->input('msg');
         $job->status = 'active';
         $job->type = $request->input('type');
@@ -61,18 +69,7 @@ class JobController extends Controller
         $job->user_id = $user = Auth::id();
         $job->save();
 
-        echo "sucessfuly added job";
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return view('jobs.alert')->with('msg', 'created a cron job!');
     }
 
     /**
@@ -83,7 +80,8 @@ class JobController extends Controller
      */
     public function edit($id)
     {
-        //
+        $job = JobModel::findOrFail($id);
+        return view('jobs.update')->with('job',  $job);
     }
 
     /**
@@ -95,7 +93,28 @@ class JobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $intervalInput = $request->input('intervalInput');
+        $intervalType = $request->input('intervalType');
+        $startDate = $request->input('sdate');
+        $startTime = $request->input('startTime');
+        $dateTime = $startDate . " " . $startTime;
+
+        // $this->setInterval($dateTime, $intervalInput, $intervalType);
+        $interval = $this->calculateMin($intervalType, $intervalInput);
+
+        $job = JobModel::findOrFail($id);
+        $job->sender_name = $request->input('sname');
+        $job->recipient_name = $request->input('rname');
+        $job->start_date = $request->input('sdate');
+        $job->end_date = $request->input('edate');
+        $job->start_time = $request->input('startTime');
+        $job->interval = $interval;
+        $job->message = $request->input('msg');
+        $job->status = 'active';
+        $job->user_id = $user = Auth::id();
+        $job->save();
+        return view('jobs.alert')->with('msg', 'updated your cron job!');
     }
 
     /**
@@ -107,6 +126,25 @@ class JobController extends Controller
     public function destroy($id)
     {
         JobModel::destroy($id);
-        print_r("successfuly deleted");
+        return view('jobs.alert')->with('msg', 'deleted your cron job!');
+    }
+
+    private function setInterval($dateTime, $interval, $type){
+        $start = Carbon::createFromFormat("Y-m-d h:i:s", $dateTime);
+        dd($start);
+    }
+
+    private function calculateMin($type, $interval){
+        switch($type){
+            case "daily":
+                return (1440 * $interval);
+                break;
+            case "hourly":
+                return (60 * $interval);
+                break;
+            case "min":
+                return $interval;
+                break;
+        }
     }
 }
