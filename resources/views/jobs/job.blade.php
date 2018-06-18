@@ -32,7 +32,7 @@
                     </ul>
                     <p class="card-text">{{ $job->message }}</p>
                     <div class="d-flex align-content-start justify-content-md-between">
-                        <form action={{url( "/jobs", $job->id) }} method="POST"> @method('PUT') @csrf
+                        <form action={{url( "/jobs/$job->id/edit") }} method="GET"> @csrf
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>
                         <form action={{url( "/jobs", $job->id) }} method="POST"> @method('DELETE') @csrf

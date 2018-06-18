@@ -18,11 +18,8 @@ Route::view('/', 'welcome');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resources([
-    'text' => 'TextController',
-    'email' => 'EmailController',
-    'post' => 'PostController',
-    'jobs' => 'JobController'
+Route::resource('jobs', 'JobController')->except([
+    'show'
 ]);
 
 
