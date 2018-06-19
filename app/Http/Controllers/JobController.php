@@ -42,8 +42,8 @@ class JobController extends Controller
      * @param  StoreJob  $request
      * @return Response
      */
-    // public function store(StoreJob $request)
-    public function store(Request $request)
+    public function store(StoreJob $request)
+    //public function store(Request $request)
     {
 
         $intervalInput = $request->input('intervalInput');
@@ -60,7 +60,7 @@ class JobController extends Controller
         $job->recipient_name = $request->input('rname');
         $job->start_date = $request->input('sdate');
         $job->end_date = $request->input('edate');
-        $job->start_time = $request->input('startTime');
+        $job->start_time = $startTime;
         $job->interval = $interval;
         $job->message = $request->input('msg');
         $job->status = 'active';

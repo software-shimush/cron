@@ -11,15 +11,15 @@
     switch (type) {
         case "text":
             typeInput.append(`<label for="destination">Recipient Number</label>
-                    <input type="text" class="form-control" id="destination" placeholder="Enter Recipient Number" name="destination">`);
+                    <input type="text" class="form-control" id="destination" placeholder="Enter Recipient Number" name="number">`);
             break;
         case "email":
             typeInput.append(`<label for="destination">Recipient Email</label>
-                    <input type="email" class="form-control" id="destination" placeholder="Enter Recipient Email" name="destination">`);
+                    <input type="email" class="form-control" id="destination" placeholder="Enter Recipient Email" name="email">`);
             break;
         case "post":
             typeInput.append(`<label for="destination">Url</label>
-                    <input type="url" class="form-control" id="destination" placeholder="Enter A Valid Url" name="destination">`);
+                    <input type="url" class="form-control" id="destination" placeholder="Enter A Valid Url" name="url">`);
     }
 
     radioButton.change(() => {

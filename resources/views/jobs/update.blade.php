@@ -5,7 +5,6 @@
  
 @section('content')
 <div class="container">
-    {{ $job->start_time }}
     <div class="row justify-content-md-center">
         <div class="col-sm-10 col-lg-6">
             <form action={{url( "/jobs/$job->id") }} method="POST">

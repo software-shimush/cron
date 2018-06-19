@@ -24,12 +24,18 @@ class StoreJob extends FormRequest
     public function rules()
     {
         return [
-            'sname' => 'required|string',
-            'rname' => 'required|string',
-            'destination' => 'required',
-            'sdate' => 'required',
-            'edate' => 'required',
-            'msg' => 'required'
+            'sname' => 'required|alpha',
+            'rname' => 'required|alpha',
+            'sdate' => 'required|date_format:Y-m-d|after_or_equal:today',
+            'edate' => 'required|date_format:Y-m-d|after:sdate',
+            'msg' => 'required|string',
+            'intervalInput' => 'required|integer|min:1',
+            'intervalType' => 'required|alpha',
+            'startTime' => 'required|date_format:H:i',
+            'type' => 'alpha',
+            'email' => 'sometimes|required|email',
+            'number' => 'sometimes|required|integer',
+            'url' => 'sometimes|required|url'
         ];
     }
 }
