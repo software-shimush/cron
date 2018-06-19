@@ -11,21 +11,21 @@
                 @csrf
                 <div class="form-group">
                     <label for="sname">Senders Name</label>
-                    <input type="text" class="form-control" id="sname" placeholder="Enter Senders Name" name="sname">
+                    <input type="text" class="form-control" id="sname" placeholder="Enter Senders Name" name="sname" value="{{ old('sname') }}">
                 </div>
-                <div class="form-group">
+                <div class=" form-group">
                     <label for="rname">Recipient Name</label>
-                    <input type="text" class="form-control" id="rname" placeholder="Enter Recipient Name" name="rname">
+                    <input type="text" class="form-control" id="rname" placeholder="Enter Recipient Name" name="rname" value="{{ old('rname') }}">
                 </div>
                 <div class="form-group" id="typeInput">
                 </div>
                 <div class="form-group">
                     <label for="sdate">Start Date</label>
-                    <input type="date" class="form-control" id="sdate" name="sdate">
+                    <input type="date" class="form-control" id="sdate" name="sdate" value="{{ old('sdate') }}">
                 </div>
                 <div class="form-group">
                     <label for="edate">End Date</label>
-                    <input type="date" class="form-control" id="edate" name="edate">
+                    <input type="date" class="form-control" id="edate" name="edate" value="{{ old('edate') }}">
                 </div>
                 How Often
                 <div class="custom-control custom-radio custom-control-inline">
@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group">
                     <label for="msg">Message</label>
-                    <textarea class="form-control" id="msg" rows="4" name="msg"></textarea>
+                    <textarea class="form-control" id="msg" rows="4" name="msg">{{ old('msg') }}</textarea>
                 </div>
                 <input type="hidden" name="type" value={{ $type }}>
                 <button type="submit" class="btn btn-primary">Submit</button>
