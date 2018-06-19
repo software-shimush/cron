@@ -32,7 +32,7 @@ class StoreJob extends FormRequest
             'intervalInput' => 'required|integer|min:1',
             'intervalType' => 'required|alpha',
             'startTime' => 'required|date_format:H:i',
-            'type' => 'alpha',
+            'type' => 'required|alpha',
             'email' => 'sometimes|required|email',
             'number' => 'sometimes|required|integer',
             'url' => 'sometimes|required|url'

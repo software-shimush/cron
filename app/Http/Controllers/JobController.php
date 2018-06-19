@@ -42,10 +42,11 @@ class JobController extends Controller
      * @param  StoreJob  $request
      * @return Response
      */
-    public function store(StoreJob $request)
-    //public function store(Request $request)
+    // public function store(StoreJob $request)
+    public function store(Request $request)
     {
 
+        $destination = $this->setDestination($request);
         $intervalInput = $request->input('intervalInput');
         $intervalType = $request->input('intervalType');
         $startDate = $request->input('sdate');
@@ -65,7 +66,8 @@ class JobController extends Controller
         $job->message = $request->input('msg');
         $job->status = 'active';
         $job->type = $request->input('type');
-        $job->destination = $request->input('destination');
+        $job->interval_type = $intervalType;
+        $job->destination = $destination;
         $job->user_id = $user = Auth::id();
         $job->save();
 
@@ -94,6 +96,7 @@ class JobController extends Controller
     public function update(Request $request, $id)
     {
         
+         $destination = $this->setDestination($request);
         $intervalInput = $request->input('intervalInput');
         $intervalType = $request->input('intervalType');
         $startDate = $request->input('sdate');
@@ -111,6 +114,7 @@ class JobController extends Controller
         $job->start_time = $request->input('startTime');
         $job->interval = $interval;
         $job->message = $request->input('msg');
+        $job->destination = $destination;
         $job->status = 'active';
         $job->user_id = $user = Auth::id();
         $job->save();
@@ -145,6 +149,16 @@ class JobController extends Controller
             case "min":
                 return $interval;
                 break;
+        }
+    }
+
+    private function setDestination($request){
+        if(app('request')->exists('number')){
+            return $request->input('number');
+        }elseif(app('request')->exists('email')){
+            return $request->input('email');
+        }elseif(app('request')->exists('url')){
+            return $request->input('url');
         }
     }
 }
