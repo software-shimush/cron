@@ -58,9 +58,15 @@
                     <label for="msg">Message</label>
                     <textarea class="form-control" id="msg" rows="4" name="msg">{{ $job->message }}</textarea>
                 </div>
+                <input type="hidden" name="type" value={{ $job->type }}>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
+        <script>
+            const type ="{{ $job->type }}";
+            const destination ="{{ $job->destination }}";
+        </script>
     </div>
 </div>
+<script src="{{ asset( 'js/form.js') }}" defer></script>
 @endsection

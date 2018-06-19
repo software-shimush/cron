@@ -1,4 +1,4 @@
-/* globals type */
+/* globals type, destination */
 (function() {
     "use strict";
 
@@ -6,20 +6,24 @@
     const howOften = $("#howOften");
     const radioButton = $("input:radio[name='intervalType']");
     const howMany = $("#howMany");
+    var destination = destination || "";
     howOften.hide();
 
     switch (type) {
         case "text":
-            typeInput.append(`<label for="destination">Recipient Number</label>
-                    <input type="text" class="form-control" id="destination" placeholder="Enter Recipient Number" name="number">`);
+            typeInput.append(`<label for="number">Recipient Number</label>
+                    <input type="text" class="form-control" id="number" placeholder="Enter Recipient Number" name="number" value=${destination}>
+                    `);
             break;
         case "email":
-            typeInput.append(`<label for="destination">Recipient Email</label>
-                    <input type="email" class="form-control" id="destination" placeholder="Enter Recipient Email" name="email">`);
+            typeInput.append(`<label for="email">Recipient Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter Recipient Email" name="email" value=${destination}>
+                    `);
             break;
         case "post":
-            typeInput.append(`<label for="destination">Url</label>
-                    <input type="url" class="form-control" id="destination" placeholder="Enter A Valid Url" name="url">`);
+            typeInput.append(`<label for="url">Url</label>
+                    <input type="url" class="form-control" id="url" placeholder="Enter A Valid Url" name="url" value=${destination}>
+                    `);
     }
 
     radioButton.change(() => {
