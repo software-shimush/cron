@@ -27,15 +27,21 @@ class StoreJob extends FormRequest
             'sname' => 'required|alpha',
             'rname' => 'required|alpha',
             'sdate' => 'required|date_format:Y-m-d|after_or_equal:today',
-            'edate' => 'required|date_format:Y-m-d|after:sdate',
+            'edate' => 'required|date_format:Y-m-d|after_or_equal:sdate',
             'msg' => 'required|string',
             'intervalInput' => 'required|integer|min:1',
             'intervalType' => 'required|alpha',
-            'startTime' => 'required|date_format:H:i',
+            'startTime' => 'date_multi_format:"H:i:s","H:i"',
             'type' => 'required|alpha',
             'email' => 'sometimes|required|email',
             'number' => 'sometimes|required|integer',
             'url' => 'sometimes|required|url'
+        ];
+    }
+
+    public function messages(){
+        return [
+            'date_multi_format' => 'Time must be formatted either h:m or h:m:s'
         ];
     }
 }

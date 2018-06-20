@@ -141,6 +141,18 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'sname' => 'Sender Name',
+        'rname' => 'Receiver Name',
+        'sdate' => 'Start Date',
+        'edate' => 'End Date',
+        'msg' => 'Message',
+        'intervalInput' => 'Interval Amount',
+        'intervalType' => 'Interval Type',
+        'startTime' => 'Start Time',
+        'email' => 'Email',
+        'number' => 'Number',
+        'url' => 'Url'
+    ],
 
 ];

@@ -42,8 +42,8 @@ class JobController extends Controller
      * @param  StoreJob  $request
      * @return Response
      */
-    // public function store(StoreJob $request)
-    public function store(Request $request)
+    public function store(StoreJob $request)
+    // public function store(Request $request)
     {
 
         $destination = $this->setDestination($request);
@@ -93,10 +93,11 @@ class JobController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    // public function update(Request $request, $id)
+    public function update(StoreJob $request, $id)
     {
         
-         $destination = $this->setDestination($request);
+        $destination = $this->setDestination($request);
         $intervalInput = $request->input('intervalInput');
         $intervalType = $request->input('intervalType');
         $startDate = $request->input('sdate');
@@ -117,6 +118,8 @@ class JobController extends Controller
         $job->destination = $destination;
         $job->status = 'active';
         $job->user_id = $user = Auth::id();
+        $job->type = $request->input('type');
+        $job->interval_type = $intervalType;
         $job->save();
         return view('jobs.alert')->with('msg', 'updated your cron job!');
     }
