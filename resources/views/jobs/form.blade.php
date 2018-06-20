@@ -59,6 +59,7 @@
             </form>
             <script>
                 const type ="{{ $type }}";
+                const update = false;
             </script>
         </div>
     </div>

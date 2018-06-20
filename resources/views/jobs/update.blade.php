@@ -31,15 +31,18 @@
                 </div>
                 How Often
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="daily" name="intervalType" class="custom-control-input" value="daily">
+                    <input type="radio" id="daily" name="intervalType" class="custom-control-input" value="daily" @if ($job->interval_type
+                    === "daily") checked @endif >
                     <label class="custom-control-label" for="daily">Daily</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="hourly" name="intervalType" class="custom-control-input" value="hourly">
+                    <input type="radio" id="hourly" name="intervalType" class="custom-control-input" value="hourly" @if ($job->interval_type
+                    === "hourly") checked @endif >
                     <label class="custom-control-label" for="hourly">Hourly</label>
                 </div>
                 <div class="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="min" name="intervalType" class="custom-control-input" value="min">
+                    <input type="radio" id="min" name="intervalType" class="custom-control-input" value="min" @if ($job->interval_type
+                    === "min") checked @endif >
                     <label class="custom-control-label" for="min">Minute</label>
                 </div>
                 <div class="form-row" id="howOften">
@@ -65,6 +68,7 @@
         <script>
             const type ="{{ $job->type }}";
             const destination ="{{ $job->destination }}";
+            const update = true;
         </script>
     </div>
 </div>

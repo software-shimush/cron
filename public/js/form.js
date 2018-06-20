@@ -1,4 +1,4 @@
-/* globals type, destination */
+/* globals type, destination, update */
 (function() {
     "use strict";
 
@@ -7,9 +7,11 @@
     const radioButton = $("input:radio[name='intervalType']");
     const howMany = $("#howMany");
 
-    const theDestination =
-        typeof destination !== "undefined" ? destination : "";
-    howOften.hide();
+    const theDestination = update ? destination : "";
+    // typeof destination !== "undefined" ? destination : "";
+    if (!update) {
+        howOften.hide();
+    }
 
     switch (type) {
         case "text":
@@ -29,7 +31,7 @@
     }
 
     radioButton.change(() => {
-        // $("#intervalInput").val("");
+        $("#intervalInput").val("");
         let oftenSelected = $("input:radio[name='intervalType']:checked").val();
         switch (oftenSelected) {
             case "daily":

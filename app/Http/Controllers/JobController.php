@@ -97,7 +97,7 @@ class JobController extends Controller
     public function update(StoreJob $request, $id)
     {
         
-         $destination = $this->setDestination($request);
+        $destination = $this->setDestination($request);
         $intervalInput = $request->input('intervalInput');
         $intervalType = $request->input('intervalType');
         $startDate = $request->input('sdate');
@@ -119,6 +119,7 @@ class JobController extends Controller
         $job->status = 'active';
         $job->user_id = $user = Auth::id();
         $job->type = $request->input('type');
+        $job->interval_type = $intervalType;
         $job->save();
         return view('jobs.alert')->with('msg', 'updated your cron job!');
     }
