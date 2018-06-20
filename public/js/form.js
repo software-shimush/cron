@@ -29,6 +29,7 @@
     }
 
     radioButton.change(() => {
+        // $("#intervalInput").val("");
         let oftenSelected = $("input:radio[name='intervalType']:checked").val();
         switch (oftenSelected) {
             case "daily":
