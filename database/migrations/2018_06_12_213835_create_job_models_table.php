@@ -26,6 +26,7 @@ class CreateJobModelsTable extends Migration
             $table->enum('status', ['active', 'inactive','completed','deleted']); 
             $table->enum('type', ['text', 'email','post']);
             $table->enum('interval_type', ['daily', 'hourly','min']);
+            $table->softDeletes();
             $table->timestamps();
             $table->string('destination');
         });
