@@ -53,20 +53,18 @@ class JobController extends Controller
         $startTime = $request->input('startTime') . ":00";
         $dateTime = $startDate . " " . $startTime;
 
-        // $this->setInterval($dateTime, $intervalInput, $intervalType);
-        $interval = $this->calculateMin($intervalType, $intervalInput);
-
         $job = new JobModel;
         $job->sender_name = $request->input('sname');
         $job->recipient_name = $request->input('rname');
         $job->start_date = $request->input('sdate');
         $job->end_date = $request->input('edate');
         $job->start_time = $startTime;
-        $job->interval = $interval;
+        $job->interval_type = $intervalType;
+        $job->interval = $intervalInput;
         $job->message = $request->input('msg');
         $job->status = 'active';
         $job->type = $request->input('type');
-        $job->interval_type = $intervalType;
+        
         $job->destination = $destination;
         $job->user_id = $user = Auth::id();
         $job->save();
@@ -104,16 +102,13 @@ class JobController extends Controller
         $startTime = $request->input('startTime');
         $dateTime = $startDate . " " . $startTime;
 
-        // $this->setInterval($dateTime, $intervalInput, $intervalType);
-        $interval = $this->calculateMin($intervalType, $intervalInput);
-
         $job = JobModel::findOrFail($id);
         $job->sender_name = $request->input('sname');
         $job->recipient_name = $request->input('rname');
         $job->start_date = $request->input('sdate');
         $job->end_date = $request->input('edate');
         $job->start_time = $request->input('startTime');
-        $job->interval = $interval;
+        $job->interval = $intervalInput;
         $job->message = $request->input('msg');
         $job->destination = $destination;
         $job->status = 'active';
@@ -141,19 +136,8 @@ class JobController extends Controller
         dd($start);
     }
 
-    private function calculateMin($type, $interval){
-        switch($type){
-            case "daily":
-                return (1440 * $interval);
-                break;
-            case "hourly":
-                return (60 * $interval);
-                break;
-            case "min":
-                return $interval;
-                break;
-        }
-    }
+    
+    
 
     private function setDestination($request){
         if(app('request')->exists('number')){

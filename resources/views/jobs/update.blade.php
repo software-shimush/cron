@@ -53,7 +53,7 @@
                     </div>
                     <div class="form-group col-sm-5">
                         <label for="intervalInput">Interval: </label>
-                        <input type="number" class="form-control" id="intervalInput" name="intervalInput" value={{ $job->interval
+                        <input type="number" class="form-control" id="intervalInput" name="intervalInput" value={{  $job->proper_interval 
                         }}>
                     </div>
                 </div>
