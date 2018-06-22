@@ -22,5 +22,11 @@ Route::resource('jobs', 'JobController')->except([
     'show'
 ]);
 
+Route::get('/mail', function(){
+    $text = "I'm hungary!!!!!!!";
+    // return new App\Mail\SendEmail($text);
+    Mail::to('you@you.com')->send(new App\Mail\SendEmail($text));
+});
+
 
 
