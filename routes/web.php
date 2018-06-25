@@ -18,9 +18,8 @@ Route::view('/', 'welcome');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('jobs', 'JobController')->except([
-    'show'
-]);
+Route::resource('jobs', 'JobController');
+Route::put('jobs/{id}/edit', 'JobController@status');
 
 Route::get('/mail', function(){
     $text = "I'm hungary!!!!!!!";
