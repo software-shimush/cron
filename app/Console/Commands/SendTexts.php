@@ -3,7 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-// require __DIR__ . '/vendor/autoload.php';
+
+
 use Twilio\Rest\Client;
 
 class SendTexts extends Command
