@@ -18,8 +18,20 @@ class JobController extends Controller
     public function index()
     {
         $id = Auth::id();
-        $jobs = JobModel::all()->where('user_id', $id);
-        return view('jobs.job')->with('jobs',  $jobs);
+        $jobs = JobModel::all()->where('user_id',  $id);
+        return view('jobs.jobs')->with('jobs',  $jobs);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $job = JobModel::findOrFail($id);
+        return view('jobs.job')->with('job',  $job);
     }
 
     /**
@@ -131,13 +143,24 @@ class JobController extends Controller
         return view('jobs.alert')->with('msg', 'deleted your cron job!');
     }
 
-    private function setInterval($dateTime, $interval, $type){
-        $start = Carbon::createFromFormat("Y-m-d h:i:s", $dateTime);
-        dd($start);
+    /**
+     * Change status of the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function status(Request $request, $id)
+    {
+// dd($request->input('status'));
+        $job = JobModel::findOrFail($id);
+        if($request->input('status') === 'active'){
+            $job->status = 'inactive';
+        }else{
+            $job->status = 'active';
+        }
+        $job->save();
+        return view('jobs.job')->with('job',  $job);
     }
-
-    
-    
 
     private function setDestination($request){
         if(app('request')->exists('number')){

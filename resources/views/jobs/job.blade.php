@@ -5,17 +5,7 @@
  
 @section('content')
 <div class="container">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-    <div class="row">
-        @foreach ($jobs as $job)
+    <div class="row justify-content-center">
         <div class="col-sm-6">
             <div class="card">
                 <h5 class="card-header">{{ $job->type }}</h5>
@@ -37,10 +27,19 @@
                         <form action={{url( "/jobs/$job->id/edit") }} method="GET"> @csrf
                             <button type="submit" class="btn btn-primary">Update</button>
                         </form>
+                        <form action={{url( "/jobs/$job->id/edit") }} method="POST"> @method('PUT') @csrf
+                            <input type="hidden" name="status" value={{ $job->status }}> <button type="submit" class="btn btn-secondary">
+                                @if ($job->status  === 'active')
+                                    Pause Job
+                                @else
+                                    Resume Job
+                                @endif
+                            </button>
+                        </form>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-                                  Delete
-                                </button>
+                            Delete
+                        </button>
                     </div>
                 </div>
             </div>
@@ -68,7 +67,6 @@
                 </div>
             </div>
         </div>
-        @endforeach
     </div>
 </div>
 @endsection
