@@ -1,75 +1,77 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('style')
-    body {
-        padding-top: 54px;
-        }
+<head>
 
-        @media (min-width: 992px) {
-            body {
-                padding-top: 56px;
-            }
-        }
-@endsection
-@section('content')
-<!-- Page Content -->
-    <div class="container">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <!-- Heading Row -->
-    <div class="row my-4">
-        <div class="col-lg-8">
-        <img class="img-fluid rounded" src="{{ asset('images/cron.png') }}" alt="">
-        </div>
-        <!-- /.col-lg-8 -->
-        <div class="col-lg-4">
-        <h1>Business Name or Tagline</h1>
-        <p>This is a template that is great for small businesses. It doesn't have too much fancy flare to it, but it makes a great use of the standard Bootstrap core components. Feel free to use this template for any project you want!</p>
-        </div>
-        <!-- /.col-md-4 -->
-    </div>
-    <!-- /.row -->
+    <title>Cron Job</title>
 
-    <!-- Content Row -->
-    <div class="row">
-        <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            <div class="card-body">
-            <h2 class="card-title">Card One</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/welcome.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    @include('inc.nav')
+    <h1 class="site-heading text-center text-white d-none d-lg-block">
+        <span class="site-heading-lower">Cron Job</span>
+    </h1>
+
+    <section class="page-section clearfix">
+        <div class="container">
+            <div class="intro">
+                <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{ asset('images/cron-welcome.png') }}" alt="">
+                <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+                    <h2 class="section-heading mb-4">
+                        <span class="section-heading-lower">Worth Using</span>
+                    </h2>
+                    <p class="mb-3">Need an email sent? Or a text messege? Or to send a post request to a url at set intervals? Then you
+                        have reached the right place! Just log in or create an account and begin scheduling your cron jobs.
+                    </p>
+                </div>
             </div>
         </div>
-        </div>
-        <!-- /.col-md-4 -->
-        <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            <div class="card-body">
-            <h2 class="card-title">Card Two</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
+    </section>
+
+    <section class="page-section cta">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto">
+                    <div class="cta-inner text-center rounded">
+                        <h2 class="section-heading mb-4">
+                            <span class="section-heading-lower">About us</span>
+                        </h2>
+                        <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore nemo adipisci, quas, maxime eaque
+                            unde suscipit ipsam excepturi optio aut consectetur esse dolorum enim error quidem porro! Quos
+                            quam est ipsa velit minima fugiat nemo quasi nobis perspiciatis. Modi consectetur quasi rerum
+                            voluptatum ipsam pariatur assumenda a quia nulla laborum.</p>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-        <!-- /.col-md-4 -->
-        <div class="col-md-4 mb-4">
-        <div class="card h-100">
-            <div class="card-body">
-            <h2 class="card-title">Card Three</h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-            </div>
-        </div>
-        </div>
-        <!-- /.col-md-4 -->
+    </section>
 
-    </div>
-    <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
-
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Cron 2018</p>
-    </div>
-    <!-- /.container -->
+    <footer class="footer text-faded text-center py-5">
+        <div class="container">
+            <p class="m-0 small">Copyright &copy; Cron Job 2018</p>
+        </div>
     </footer>
-    @endsection
+
+</body>
+
+</html>
