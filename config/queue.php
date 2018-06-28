@@ -28,10 +28,10 @@ return [
     |
     */
 
-    'connections' => [
+    'connections' => [ 
 
         'sync' => [
-            'driver' => 'sync',
+            'driver' => 'redis',
         ],
 
         'database' => [
