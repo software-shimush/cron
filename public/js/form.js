@@ -6,6 +6,7 @@
     const howOften = $("#howOften");
     const radioButton = $("input:radio[name='intervalType']");
     const howMany = $("#howMany");
+    const msg = $("#msg");
 
     const theDestination = update ? destination : "";
     // typeof destination !== "undefined" ? destination : "";
@@ -28,6 +29,14 @@
             typeInput.append(`<label for="url">Url</label>
                     <input type="url" class="form-control" id="url" placeholder="Enter A Valid Url" name="url" value=${theDestination}>
                     `);
+            msg.empty();
+            $(
+                '<button type="button" class="btn btn-secondary btn-sm" id="btn">New Key</button>'
+            )
+                .insertAfter(msg)
+                .click(payload);
+            payload();
+            break;
     }
 
     radioButton.change(() => {
@@ -46,4 +55,18 @@
         }
         howOften.show();
     });
+
+    function payload() {
+        for (let i = 0; i < 4; i++) {
+            msg.append(`
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Key Value</span>
+                    </div>
+                    <input type="text" class="form-control" name="key[]">
+                    <input type="text" class="form-control" name="value[]">
+                </div>
+            `);
+        }
+    }
 })();

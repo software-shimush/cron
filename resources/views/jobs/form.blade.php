@@ -51,11 +51,13 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="msg">Message</label>
-                    <textarea class="form-control" id="msg" rows="4" name="msg">{{ old('msg') }}</textarea>
+                    <div id="msg">
+                        <label for="msg">Message</label>
+                        <textarea class="form-control" id="msg" rows="4" name="msg">{{ old('msg') }}</textarea>
+                    </div>
                 </div>
                 <input type="hidden" name="type" value={{ $type }}>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
             <script>
                 const type ="{{ $type }}";
