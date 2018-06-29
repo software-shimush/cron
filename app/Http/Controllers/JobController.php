@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Events\JobSubmitted;
 use App\Http\Requests\StoreJob;
 use App\JobModel;
-use Carbon\Carbon;
 
 class JobController extends Controller
 {
@@ -64,8 +64,8 @@ class JobController extends Controller
      * @param  StoreJob  $request
      * @return Response
      */
-    public function store(StoreJob $request)
-    // public function store(Request $request)
+    // public function store(StoreJob $request)
+    public function store(Request $request)
     {
 
         $destination = $this->setDestination($request);
@@ -74,6 +74,7 @@ class JobController extends Controller
         $startDate = $request->input('sdate');
         $startTime = $request->input('startTime') . ":00";
         $dateTime = $startDate . " " . $startTime;
+        $type = $request->input('type');
 
         $job = new JobModel;
         $job->sender_name = $request->input('sname');
@@ -85,11 +86,12 @@ class JobController extends Controller
         $job->interval = $intervalInput;
         $job->message = $request->input('msg');
         $job->status = 'active';
-        $job->type = $request->input('type');
-        
+        $job->type = $type; 
         $job->destination = $destination;
         $job->user_id = $user = Auth::id();
-        $job->save();
+        // $job->save();
+
+        event(new JobSubmitted($job));
 
         return view('jobs.alert')->with('msg', 'created a cron job!');
     }
