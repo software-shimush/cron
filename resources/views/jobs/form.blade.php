@@ -19,15 +19,27 @@
                 </div>
                 <div class="form-group" id="typeInput">
                 </div>
-                <div class="form-group">
-                    <label for="sdate">Start Date</label>
-                    <input type="date" class="form-control" id="sdate" name="sdate" value="{{ old('sdate') }}">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="sdate">Start Date</label>
+                        <input type="date" class="form-control" name="sdate" value="{{ old('sdate') }}">
+                    </div>
+                    <div class="col">
+                        <label for="startTime">Start Time</label>
+                        <input type="time" class="form-control" id="startTime" name="startTime" value="{{ old('startTime') }}">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="edate">End Date</label>
-                    <input type="date" class="form-control" id="edate" name="edate" value="{{ old('edate') }}">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="edate">End Date</label>
+                        <input type="date" class="form-control" name="edate" value="{{ old('edate') }}">
+                    </div>
+                    <div class="col">
+                        <label for="edate">End Time</label>
+                        <input type="time" class="form-control" name="etime" value="{{ old('etime') }}">
+                    </div>
                 </div>
-                How Often
+                <div><label for="intervalType">How Often</label></div>
                 <div class="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="daily" name="intervalType" class="custom-control-input" value="daily">
                     <label class="custom-control-label" for="daily">Daily</label>
@@ -41,10 +53,6 @@
                     <label class="custom-control-label" for="min">Minute</label>
                 </div>
                 <div class="form-row" id="howOften">
-                    <div class="form-group col-sm-4">
-                        <label for="startTime">Start Time</label>
-                        <input type="time" class="form-control" id="startTime" name="startTime">
-                    </div>
                     <div class="form-group col-sm-5">
                         <label for="intervalInput"><span id="howMany"></span></label>
                         <input type="number" class="form-control" id="intervalInput" name="intervalInput">

@@ -15,15 +15,17 @@ class JobSubmitted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
     public $job;
+    public $firstTime;
 
     /**
      * Create a new event instance.
      *
      * @return void 
      */
-    public function __construct(JobModel $job)
+    public function __construct(JobModel $job, $firstTime)
     {
         $this->job = $job;
+        $this->firstTime = $firstTime;
     }
 
     /**

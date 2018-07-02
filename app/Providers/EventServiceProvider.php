@@ -14,7 +14,8 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'App\Events\JobSubmitted' => [
-            'App\Listeners\ScheduleJob', 
+            'App\Listeners\ScheduleJob',
+            'App\Listeners\CheckCompleted',  
         ],
     ];
 

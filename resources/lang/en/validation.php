@@ -150,6 +150,7 @@ return [
         'intervalInput' => 'Interval Amount',
         'intervalType' => 'Interval Type',
         'startTime' => 'Start Time',
+        'etime' => 'End Time',
         'email' => 'Email',
         'number' => 'Number',
         'url' => 'Url'
