@@ -5,6 +5,8 @@ namespace App\Listeners;
 use App\Events\JobSubmitted;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Carbon\Carbon;
+use App\JobModel;
 
 class CheckCompleted
 {

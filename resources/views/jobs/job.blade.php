@@ -20,6 +20,7 @@
                         <li class="list-group-item">End Date: {{ $job->end_date }}</li>
                         <li class="list-group-item">Scheduled: {{ $job->interval_type }}</li>
                         <li class="list-group-item">Start Time: {{ $job->start_time }}</li>
+                        <li class="list-group-item">End Time: {{ $job->end_time }}</li>
                         <li class="list-group-item">Interval: {{ $job->proper_interval }}</li>
                     </ul>
                     <p class="card-text">{{ $job->message }}</p>

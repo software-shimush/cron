@@ -71,9 +71,8 @@ class JobController extends Controller
         $destination = $this->setDestination($request);
         $intervalInput = $request->input('intervalInput');
         $intervalType = $request->input('intervalType');
-        $startDate = $request->input('sdate');
         $startTime = $request->input('startTime') . ":00";
-        $dateTime = $startDate . " " . $startTime;
+        $endTime = $request->input('etime') . ":00";
         $type = $request->input('type');
 
         $job = new JobModel;
@@ -82,7 +81,7 @@ class JobController extends Controller
         $job->start_date = $request->input('sdate');
         $job->end_date = $request->input('edate');
         $job->start_time = $startTime;
-        $job->start_time = $request->input('etime');
+        $job->end_time = $endTime;
         $job->interval_type = $intervalType;
         $job->interval = $intervalInput;
         $job->message = $request->input('msg');
@@ -123,9 +122,6 @@ class JobController extends Controller
         $destination = $this->setDestination($request);
         $intervalInput = $request->input('intervalInput');
         $intervalType = $request->input('intervalType');
-        $startDate = $request->input('sdate');
-        $startTime = $request->input('startTime');
-        $dateTime = $startDate . " " . $startTime;
 
         $job = JobModel::findOrFail($id);
         $job->sender_name = $request->input('sname');
@@ -133,7 +129,7 @@ class JobController extends Controller
         $job->start_date = $request->input('sdate');
         $job->end_date = $request->input('edate');
         $job->start_time = $request->input('startTime');
-        $job->start_time = $request->input('etime');
+        $job->end_time = $request->input('etime');
         $job->interval = $intervalInput;
         $job->message = $request->input('msg');
         $job->destination = $destination;
