@@ -30,11 +30,20 @@ class ScheduleJob
     {
         $st = Carbon::createFromFormat('Y-m-d H:i:s', $event->job['start_date'] . " " . $event->job['start_time'], 'America/Toronto');
         $now = Carbon::now('America/Toronto');
-        $diff = $now->diffInMinutes($st);
-        // dd($diff);
+        $interval = $event->job['interval'];
+        $delay;
+        
+        //check if it's the first time 
+        if($event->firstTime){
+            $delay = $now->diffInMinutes($st);
+            print_r("first time");
+        }else{
+             $delay = $interval;
+        }
+        
         switch($event->job['type']){
             case "email":
-                JobEmail::dispatch($event->job)->delay(now()->addMinutes($diff));
+                JobEmail::dispatch($event->job)->delay(now()->addMinutes($delay));
                 break;
         }
     }
