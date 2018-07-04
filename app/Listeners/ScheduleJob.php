@@ -7,6 +7,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Carbon\Carbon;
 use App\Jobs\JobEmail;
+use App\Jobs\JobText;
 
 class ScheduleJob
 {
@@ -43,6 +44,9 @@ class ScheduleJob
         switch($event->job['type']){
             case "email":
                 JobEmail::dispatch($event->job)->delay(now()->addMinutes($delay));
+                break;
+            case "text":
+                JobText::dispatch($event->job)->delay(now()->addMinutes($delay));
                 break;
         }
     }

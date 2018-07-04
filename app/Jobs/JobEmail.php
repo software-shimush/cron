@@ -40,8 +40,8 @@ class JobEmail implements ShouldQueue
      */
     public function handle()
     {
-        $nextJob = JobModel::findOrFail($this->id);  
-        if(!$nextJob->deleted && $nextJob->status !== "completed"){
+        $nextJob = JobModel::find($this->id); 
+        if($nextJob && $nextJob->status !== "completed"){
             if($nextJob->status === "active"){
                 Mail::to($this->destination)->send(new SendEmail($this->message));
             }
