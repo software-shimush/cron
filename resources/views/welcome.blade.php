@@ -48,24 +48,6 @@
         </div>
     </section>
 
-    <section class="page-section cta">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-9 mx-auto">
-                    <div class="cta-inner text-center rounded">
-                        <h2 class="section-heading mb-4">
-                            <span class="section-heading-lower">About us</span>
-                        </h2>
-                        <p class="mb-0">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore nemo adipisci, quas, maxime eaque
-                            unde suscipit ipsam excepturi optio aut consectetur esse dolorum enim error quidem porro! Quos
-                            quam est ipsa velit minima fugiat nemo quasi nobis perspiciatis. Modi consectetur quasi rerum
-                            voluptatum ipsam pariatur assumenda a quia nulla laborum.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer class="footer text-faded text-center py-5">
         <div class="container">
             <p class="m-0 small">Copyright &copy; Cron Job 2018</p>

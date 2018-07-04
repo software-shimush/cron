@@ -23,7 +23,12 @@
                         <li class="list-group-item">End Time: {{ $job->end_time }}</li>
                         <li class="list-group-item">Interval: {{ $job->proper_interval }}</li>
                     </ul>
-                    <p class="card-text">{{ $job->message }}</p>
+                    @if ($job->message)
+                    <p class="card-text">Message: {{ $job->message }}</p>
+                    @endif @if ($job->payload)
+                    <p class="card-text">Data: {{ $job->payload }}</p>
+                    @endif
+
                     <div class="d-flex align-content-start justify-content-md-between">
                         <form action={{url( "/jobs/$job->id/edit") }} method="GET"> @csrf
                             <button type="submit" class="btn btn-primary">Update</button>

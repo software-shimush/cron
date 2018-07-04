@@ -64,7 +64,7 @@
                         <span class="input-group-text">Key Value</span>
                     </div>
                     <input type="text" class="form-control" name="key[]">
-                    <input type="text" class="form-control" name="value[]">
+                    <input type="text" class="form-control" name="value[]"> 
                 </div>
             `);
         }

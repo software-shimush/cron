@@ -43,4 +43,12 @@ class JobModel extends Model
                 return "none";
         }
     }
+
+    public function setPayloadAttribute($value){
+        $this->attributes['payload'] = $value;
+        unset($this->attributes['payload']['']); //remove any empty keys
+        $this->attributes['payload'] = json_encode($this->attributes['payload']);
+
+        
+    }
 }
