@@ -24,18 +24,28 @@
             typeInput.append(`<label for="email">Recipient Email</label>
                     <input type="email" class="form-control" id="email" placeholder="Enter Recipient Email" name="email" value=${theDestination}>
                     `);
+            if (!update) {
+                email();
+            } else {
+                $("#updateParam").click(() => {
+                    email();
+                    $("#updateParam").hide();
+                });
+            }
             break;
         case "post":
             typeInput.append(`<label for="url">Url</label>
                     <input type="url" class="form-control" id="url" placeholder="Enter A Valid Url" name="url" value=${theDestination}>
                     `);
             msg.empty();
-            $(
-                '<button type="button" class="btn btn-secondary btn-sm" id="btn">New Key</button>'
-            )
-                .insertAfter(msg)
-                .click(payload);
-            payload();
+            if (!update) {
+                addParams();
+            } else {
+                $("#updateParam").click(() => {
+                    addParams();
+                    $("#updateParam").hide();
+                });
+            }
             break;
     }
 
@@ -56,6 +66,15 @@
         howOften.show();
     });
 
+    function addParams() {
+        $(
+            '<button type="button" class="btn btn-secondary btn-sm" id="btn">New Key</button>'
+        )
+            .insertAfter(msg)
+            .click(payload);
+        payload();
+    }
+
     function payload() {
         for (let i = 0; i < 4; i++) {
             msg.append(`
@@ -68,5 +87,28 @@
                 </div>
             `);
         }
+    }
+
+    function email() {
+        msg.append(`
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Subject</span>
+                </div>
+                <input type="text" class="form-control" name="emailParams[]" value="">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Cc</span>
+                </div>
+                <input type="email" class="form-control" name="emailParams[]" value="">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Bcc</span>
+                </div>
+                <input type="email" class="form-control" name="emailParams[]" value="">
+            </div>
+        `);
     }
 })();

@@ -26,7 +26,13 @@
                     @if ($job->message)
                     <p class="card-text">Message: {{ $job->message }}</p>
                     @endif @if ($job->payload)
-                    <p class="card-text">Data: {{ $job->payload }}</p>
+                    <p class="card-text">Data:
+                        <ul>
+                            @foreach ($job->payload as $key => $value)
+                            <li><strong>{{ $key }}: </strong> {{ $value }}</li>
+                            @endforeach
+                        </ul>
+                    </p>
                     @endif
 
                     <div class="d-flex align-content-start justify-content-md-between">

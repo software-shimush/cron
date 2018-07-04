@@ -38,7 +38,9 @@ class StoreJob extends FormRequest
             'number' => 'sometimes|required|integer',
             'url' => 'sometimes|required|url',
             'key' => 'sometimes|required|string',
-            'value' => 'sometimes|required|string'
+            'cc' => 'email',
+            'bcc' => 'email'
+
         ];
     }
 

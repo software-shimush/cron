@@ -48,43 +48,57 @@
                         <label for="edate">End Time</label>
                         <input type="time" class="form-control" name="etime" value="{{ $job->end_time }}">
                     </div>
-                    <div><label for="intervalType">How Often</label></div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="daily" name="intervalType" class="custom-control-input" value="daily" @if ($job->interval_type
-                        === "daily") checked @endif >
-                        <label class="custom-control-label" for="daily">Daily</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="hourly" name="intervalType" class="custom-control-input" value="hourly" @if ($job->interval_type
-                        === "hourly") checked @endif >
-                        <label class="custom-control-label" for="hourly">Hourly</label>
-                    </div>
-                    <div class="custom-control custom-radio custom-control-inline">
-                        <input type="radio" id="min" name="intervalType" class="custom-control-input" value="min" @if ($job->interval_type
-                        === "min") checked @endif >
-                        <label class="custom-control-label" for="min">Minute</label>
-                    </div>
-                    <div class="form-row" id="howOften">
-                        <div class="form-group">
-                            <label for="intervalInput">Interval: </label>
-                            <input type="number" class="form-control" id="intervalInput" name="intervalInput" value={{ $job->proper_interval
-                            }}>
-                        </div>
-                    </div>
+                </div>
+                <div><label for="intervalType">How Often</label></div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="daily" name="intervalType" class="custom-control-input" value="daily" @if ($job->interval_type
+                    === "daily") checked @endif >
+                    <label class="custom-control-label" for="daily">Daily</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="hourly" name="intervalType" class="custom-control-input" value="hourly" @if ($job->interval_type
+                    === "hourly") checked @endif >
+                    <label class="custom-control-label" for="hourly">Hourly</label>
+                </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                    <input type="radio" id="min" name="intervalType" class="custom-control-input" value="min" @if ($job->interval_type
+                    === "min") checked @endif >
+                    <label class="custom-control-label" for="min">Minute</label>
+                </div>
+                <div class="form-row" id="howOften">
                     <div class="form-group">
+                        <label for="intervalInput">Interval: </label>
+                        <input type="number" class="form-control" id="intervalInput" name="intervalInput" value={{ $job->proper_interval
+                        }}>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div id="msg">
                         <label for="msg">Message</label>
                         <textarea class="form-control" id="msg" rows="4" name="msg">{{ $job->message }}</textarea>
                     </div>
-                    <input type="hidden" name="type" value={{ $job->type }}>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    @if ($job->payload > 0)
+                    <div><label for="params">Paramators:</label></div>
+                    <div class="alert alert-primary" id="params">
+                        <ul>
+                            @foreach ($job->payload as $key => $value)
+                            <li><strong>{{ $key }}: </strong> {{ $value }}</li>
+                            @endforeach
+                            <div><button type="button" class="btn btn-sm btn-primary" id="updateParam">Update</button></div>
+                        </ul>
+                    </div>
+                    @endif
+                </div>
+                <input type="hidden" name="type" value={{ $job->type }}>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </form>
-            </div>
-            <script>
-                const type ="{{ $job->type }}";
+        </div>
+        <script>
+            const type ="{{ $job->type }}";
             const destination ="{{ $job->destination }}";
             const update = true;
-            </script>
-        </div>
+        </script>
     </div>
-    <script src="{{ asset( 'js/form.js') }}" defer></script>
+</div>
+<script src="{{ asset( 'js/form.js') }}" defer></script>
 @endsection

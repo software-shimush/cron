@@ -47,8 +47,10 @@ class JobModel extends Model
     public function setPayloadAttribute($value){
         $this->attributes['payload'] = $value;
         unset($this->attributes['payload']['']); //remove any empty keys
-        $this->attributes['payload'] = json_encode($this->attributes['payload']);
+        $this->attributes['payload'] = json_encode($this->attributes['payload']);     
+    }
 
-        
+    public function getPayloadAttribute($value){
+        return json_decode($value, true);
     }
 }
