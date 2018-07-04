@@ -37,7 +37,6 @@ class ScheduleJob
         //check if it's the first time 
         if($event->firstTime){
             $delay = $now->diffInMinutes($st);
-            print_r("first time");
         }else{
              $delay = $interval;
         }

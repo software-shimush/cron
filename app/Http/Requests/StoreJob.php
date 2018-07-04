@@ -28,7 +28,7 @@ class StoreJob extends FormRequest
             'rname' => 'required|alpha',
             'sdate' => 'required|date_format:Y-m-d|after_or_equal:today',
             'edate' => 'required|date_format:Y-m-d|after_or_equal:sdate',
-            'msg' => 'required|string',
+            'msg' => 'sometimes|required|string',
             'intervalInput' => 'required|integer|min:1',
             'intervalType' => 'required|alpha',
             'startTime' => 'required|date_multi_format:"H:i:s","H:i"',
@@ -36,7 +36,9 @@ class StoreJob extends FormRequest
             'type' => 'required|alpha',
             'email' => 'sometimes|required|email',
             'number' => 'sometimes|required|integer',
-            'url' => 'sometimes|required|url'
+            'url' => 'sometimes|required|url',
+            'key' => 'sometimes|required|string',
+            'value' => 'sometimes|required|string'
         ];
     }
 

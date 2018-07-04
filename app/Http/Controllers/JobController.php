@@ -41,7 +41,7 @@ class JobController extends Controller
     public function show($id)
     {
         $job = JobModel::findOrFail($id);
-        return view('jobs.job')->with('job',  $job);
+        return view('jobs.job')->with('job',  $job); 
     }
 
     /**
@@ -69,11 +69,8 @@ class JobController extends Controller
     {
 
         $destination = $this->setDestination($request);
-        $intervalInput = $request->input('intervalInput');
-        $intervalType = $request->input('intervalType');
         $startTime = $request->input('startTime') . ":00";
         $endTime = $request->input('etime') . ":00";
-        $type = $request->input('type');
 
         $job = new JobModel;
         $job->sender_name = $request->input('sname');
@@ -82,11 +79,18 @@ class JobController extends Controller
         $job->end_date = $request->input('edate');
         $job->start_time = $startTime;
         $job->end_time = $endTime;
-        $job->interval_type = $intervalType;
-        $job->interval = $intervalInput;
-        $job->message = $request->input('msg');
+        $job->interval_type = $request->input('intervalType');
+        $job->interval = $request->input('intervalInput');
+        if($request->has('msg')){
+            $job->message = $request->input('msg');
+        }
+        if($request->has(['key', 'value'])){
+            $key = $request->input('key');
+            $value = $request->input('value');
+            $job->payload = array_combine($key, $value);
+        }
         $job->status = 'active';
-        $job->type = $type; 
+        $job->type = $request->input('type'); 
         $job->destination = $destination;
         $job->user_id = $user = 1;
         // $job->user_id = $user = Auth::id();
@@ -121,8 +125,6 @@ class JobController extends Controller
     {
         
         $destination = $this->setDestination($request);
-        $intervalInput = $request->input('intervalInput');
-        $intervalType = $request->input('intervalType');
 
         $job = JobModel::findOrFail($id);
         $job->sender_name = $request->input('sname');
@@ -131,13 +133,20 @@ class JobController extends Controller
         $job->end_date = $request->input('edate');
         $job->start_time = $request->input('startTime');
         $job->end_time = $request->input('etime');
-        $job->interval = $intervalInput;
-        $job->message = $request->input('msg');
+        $job->interval = $request->input('intervalInput');
+        if($request->has('msg')){
+            $job->message = $request->input('msg');
+        }
+        if($request->has(['key', 'value'])){
+            $key = $request->input('key');
+            $value = $request->input('value');
+            $job->payload = array_combine($key, $value);
+        }
         $job->destination = $destination;
         $job->status = 'active';
         $job->user_id = $user = Auth::id();
         $job->type = $request->input('type');
-        $job->interval_type = $intervalType;
+        $job->interval_type = $request->input('intervalType');
         $job->save();
         return view('jobs.alert')->with('msg', 'updated your cron job!');
     }
