@@ -15,10 +15,10 @@ class JobController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     
     /**
      * Display a listing of the resource.
@@ -88,7 +88,8 @@ class JobController extends Controller
         $job->status = 'active';
         $job->type = $type; 
         $job->destination = $destination;
-        $job->user_id = $user = Auth::id();
+        $job->user_id = $user = 1;
+        // $job->user_id = $user = Auth::id();
         $job->save();
 
         event(new JobSubmitted($job, true));
@@ -149,7 +150,12 @@ class JobController extends Controller
      */
     public function destroy($id)
     {
+        
+        $job = JobModel::findOrFail($id);
+        $job->status = 'deleted';
+        $job->save();
         JobModel::destroy($id);
+
         return view('jobs.alert')->with('msg', 'deleted your cron job!');
     }
 
