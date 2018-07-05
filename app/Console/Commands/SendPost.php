@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
+use App\JobModel;
 
 
 class SendPost extends Command
@@ -40,15 +41,14 @@ class SendPost extends Command
      */
     public function handle()
     {
+        $Job = JobModel::find(22); 
+       
         $client = new Client(); //GuzzleHttp\Client
-        $result = $client->request('POST','https://jsonplaceholder.typicode.com/posts', [
-            'form_params' => [
-                "userId" => 1,   
-                "title" => "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-                "body" => "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
-                            ]
+        $result = $client->request('POST',$Job->destination, [
+            'form_params' => 
+                $Job->payload
                 ]);
-                $this->info($result->getBody());
+                print_r($this->info($result->getBody()));
                 
     }
 }

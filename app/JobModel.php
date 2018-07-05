@@ -51,4 +51,7 @@ class JobModel extends Model
 
         
     }
+    public function getPayloadAttribute($value){
+        return json_decode($value, true);
+    }
 }

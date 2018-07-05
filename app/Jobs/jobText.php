@@ -17,19 +17,15 @@ class jobText implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $id;
-    protected $destination;
-    protected $message;
+   
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct(JobModel $theJob)
+    public function __construct($id)
     {
-       $this->id = $theJob["id"];
-       $this->destination = "+" . $theJob['destination'];
-        // $this->destination = '+17327787355';
-       $this->message = $theJob["message"];
+       $this->id = $id;
     }
 
     /**
@@ -52,11 +48,10 @@ class jobText implements ShouldQueue
         
                 $client = new Client($account_sid, $auth_token);
                 $client->messages->create(
-                    // Where to send a text message (your cell phone?)
-                    $this->destination,
+                    "+" . $nextJob->destination ,
                     array(
                         'from' => $twilio_number,
-                        'body' =>  $this->message
+                        'body' =>  $nextJob->message
                     )
         );
         
