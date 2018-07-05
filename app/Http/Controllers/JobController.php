@@ -67,7 +67,6 @@ class JobController extends Controller
     // public function store(StoreJob $request)
     public function store(Request $request)
     {
-
         $destination = $this->setDestination($request);
         $startTime = $request->input('startTime') . ":00";
         $endTime = $request->input('etime') . ":00";
@@ -88,6 +87,12 @@ class JobController extends Controller
             $key = $request->input('key');
             $value = $request->input('value');
             $job->payload = array_combine($key, $value);
+        }
+        
+        if($request->has('emailParams')){
+            $keys = ['subject', 'cc', 'bcc'];
+            $emailParams = $request->input('emailParams');
+            $job->payload = array_combine($keys, $emailParams);
         }
         $job->status = 'active';
         $job->type = $request->input('type'); 
