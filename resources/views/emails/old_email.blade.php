@@ -1,1 +1,0 @@
-<h2>Email works {{$text}}</h2>

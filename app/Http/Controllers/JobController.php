@@ -97,11 +97,10 @@ class JobController extends Controller
         $job->status = 'active';
         $job->type = $request->input('type'); 
         $job->destination = $destination;
-        $job->user_id = $user = 1;
-        // $job->user_id = $user = Auth::id();
+        $job->user_id = Auth::id();
         $job->save();
 
-        event(new JobSubmitted($job, true));
+        event(new JobSubmitted(Auth::user(), $job, true));
 
         return view('jobs.alert')->with('msg', 'created a cron job!');
     }
@@ -149,7 +148,7 @@ class JobController extends Controller
         }
         $job->destination = $destination;
         $job->status = 'active';
-        $job->user_id = $user = Auth::id();
+        $job->user_id = Auth::id();
         $job->type = $request->input('type');
         $job->interval_type = $request->input('intervalType');
         $job->save();

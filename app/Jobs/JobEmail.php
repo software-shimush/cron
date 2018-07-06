@@ -11,13 +11,13 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use App\Events\JobSubmitted;
-use App\Events\JobAboutToRun;
 
 class JobEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $id;
+    protected $user;
    
 
     /**
@@ -25,9 +25,10 @@ class JobEmail implements ShouldQueue
      *
      * @return void
      */
-    public function __construct($id)
+    public function __construct($id, $user)
     {
         $this->id = $id;
+        $this->user = $user;
        
     }
 
@@ -41,10 +42,13 @@ class JobEmail implements ShouldQueue
         $nextJob = JobModel::find($this->id); 
         if($nextJob && $nextJob->status !== "completed"){
             if($nextJob->status === "active"){
-                Mail::to($nextJobs->destination)->send(new SendEmail($nextJob->message));
+                Mail::to($nextJob->destination)
+                ->cc($nextJob->payload["cc"])
+                ->bcc($nextJob->payload["bcc"])
+                ->send(new SendEmail($this->user, $nextJob->message, $nextJob->payload["subject"]));
             }
-            event(new JobSubmitted($nextJob, false));
+            event(new JobSubmitted($this->user, $nextJob, false));
         }
-    }
+    } 
 
 }

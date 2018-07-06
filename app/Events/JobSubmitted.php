@@ -14,6 +14,7 @@ use App\JobModel;
 class JobSubmitted
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
+    public $user;
     public $job;
     public $firstTime;
 
@@ -22,8 +23,9 @@ class JobSubmitted
      *
      * @return void 
      */
-    public function __construct(JobModel $job, $firstTime)
+    public function __construct($user, JobModel $job, $firstTime)
     {
+        $this->user = $user;
         $this->job = $job;
         $this->firstTime = $firstTime;
     }
