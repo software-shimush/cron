@@ -97,7 +97,8 @@ class JobController extends Controller
         $job->status = 'active';
         $job->type = $request->input('type'); 
         $job->destination = $destination;
-        $job->user_id = Auth::id();
+        $job->user_id = 1;
+        // $job->user_id = Auth::id();
         $job->save();
 
         event(new JobSubmitted(Auth::user(), $job, true));
