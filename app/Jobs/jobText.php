@@ -17,15 +17,17 @@ class jobText implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $id;
+    protected $user;
    
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($id)
+    public function __construct($id,$user)
     {
        $this->id = $id;
+       $this->user = $user;
     }
 
     /**
@@ -56,7 +58,7 @@ class jobText implements ShouldQueue
         );
         
             }
-            event(new JobSubmitted($nextJob, false));
+            event(new JobSubmitted($this->user,$nextJob, false));
         }
     }
 }

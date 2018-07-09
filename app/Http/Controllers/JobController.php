@@ -28,7 +28,7 @@ class JobController extends Controller
     public function index()
     {
         $id = Auth::id();
-        $jobs = JobModel::all()->where('user_id',  $id);
+        $jobs = JobModel::all()->where('user_id',  $id)->where('status', '!=','deleted');
         return view('jobs.jobs')->with('jobs',  $jobs);
     }
 
@@ -167,7 +167,7 @@ class JobController extends Controller
         $job = JobModel::findOrFail($id);
         $job->status = 'deleted';
         $job->save();
-        JobModel::destroy($id);
+        // JobModel::destroy($id);
 
         return view('jobs.alert')->with('msg', 'deleted your cron job!');
     }

@@ -1,5 +1,5 @@
 /* globals type, destination, update */
-(function() {
+(function () {
     "use strict";
 
     const typeInput = $("#typeInput");

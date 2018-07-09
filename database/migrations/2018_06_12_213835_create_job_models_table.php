@@ -26,7 +26,7 @@ class CreateJobModelsTable extends Migration
 
             $table->text('message')->nullable();
             $table->json('payload')->nullable();
-            $table->enum('status', ['active', 'inactive','completed']); 
+            $table->enum('status', ['active', 'inactive','completed','deleted']); 
 
             $table->enum('type', ['text', 'email','post']);
             $table->enum('interval_type', ['daily', 'hourly','min']);
