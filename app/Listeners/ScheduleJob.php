@@ -46,10 +46,10 @@ class ScheduleJob
                 JobEmail::dispatch($event->job['id'], $event->user)->delay(now()->addMinutes($delay));
                 break;
             case "text":
-                JobText::dispatch($event->job['id'])->delay(now()->addMinutes($delay));
+                JobText::dispatch($event->job['id'],$event->user)->delay(now()->addMinutes($delay));
                 break;
             case "post":
-                JobPost::dispatch($event->job['id'])->delay(now()->addMinutes($delay));
+                JobPost::dispatch($event->job['id'],$event->user)->delay(now()->addMinutes($delay));
                 break;
         }
     }

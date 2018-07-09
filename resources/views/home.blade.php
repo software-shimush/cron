@@ -6,20 +6,20 @@ scroll; -webkit-background-size: cover; -moz-background-size: cover; background-
 @endsection
  
 @section('content')
-<header class="business-header">
+{{-- <header class="business-header">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="display-3 text-center text-white mt-4">Business Name or Tagline</h1>
+        <h1 class="display-3 text-center text-white mt-4">Cron Job</h1>
       </div>
     </div>
   </div>
-</header>
+</header> --}}
 
 <!-- Page Content -->
 <div class="container">
 
-  <div class="row">
+  {{-- <div class="row">
     <div class="col-sm-8">
       <h2 class="mt-4">What We Do</h2>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores
@@ -43,55 +43,55 @@ scroll; -webkit-background-size: cover; -moz-background-size: cover; background-
             <a href="mailto:#">name@example.com</a>
           </address>
     </div>
-  </div>
+  </div> --}}
   <!-- /.row -->
 
   <div class="row">
     <div class="col-sm-4 my-4">
       <div class="card">
-        <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+        <img class="card-img-top" src="{{ asset('images/cron-text.png') }}" alt="">
         <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+          <h4 class="card-title">Send A Text</h4>
+          {{-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p> --}}
         </div>
         <div class="card-footer">
           <form action="/jobs/create" method="get">
             @csrf
             <input type="hidden" name="type" value="text">
-            <button type="submit" class="btn btn-primary">Create Job</button>
+            <button type="submit" class="btn btn-primary">Create A Text Job</button>
           </form>
         </div>
       </div>
     </div>
     <div class="col-sm-4 my-4">
       <div class="card">
-        <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+        <img class="card-img-top" src="{{ asset('images/cron-email.png') }}" alt="">
         <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam
-            ut praesentium aut.</p>
+          <h4 class="card-title">Send A Email</h4>
+          {{-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam --}}
+            {{-- ut praesentium aut.</p> --}}
         </div>
         <div class="card-footer">
           <form action="/jobs/create" method="get">
             @csrf
             <input type="hidden" name="type" value="email">
-            <button type="submit" class="btn btn-primary">Create Job</button>
+            <button type="submit" class="btn btn-primary">Create A Email Job</button>
           </form>
         </div>
       </div>
     </div>
     <div class="col-sm-4 my-4">
       <div class="card">
-        <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+        <img class="card-img-top" src="{{ asset('images/postimg.png') }}" alt="">
         <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          <h4 class="card-title">Post to A URL</h4>
+          {{-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p> --}}
         </div>
         <div class="card-footer">
           <form action="/jobs/create" method="get">
             @csrf
             <input type="hidden" name="type" value="post">
-            <button type="submit" class="btn btn-primary">Create Job</button>
+            <button type="submit" class="btn btn-primary">Create A Post Job</button>
           </form>
         </div>
       </div>
@@ -106,7 +106,7 @@ scroll; -webkit-background-size: cover; -moz-background-size: cover; background-
 <!-- Footer -->
 <footer class="py-5 bg-dark">
   <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    <p class="m-0 text-center text-white">Copyright &copy; Cron Job 2018</p>
   </div>
   <!-- /.container -->
 </footer>

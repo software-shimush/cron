@@ -42,7 +42,7 @@
                         <form action={{url( "/jobs/$job->id/edit") }} method="POST"> @method('PUT') @csrf
                             <input type="hidden" name="status" value={{ $job->status }}> <button type="submit" class="btn btn-secondary">
                                 @if ($job->status  === 'active')
-                                    Pause Job
+                                    Pause job
                                 @else
                                     Resume Job
                                 @endif
