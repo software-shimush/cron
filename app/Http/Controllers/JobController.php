@@ -15,10 +15,10 @@ class JobController extends Controller
      *
      * @return void
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     /**
      * Display a listing of the resource.
@@ -64,8 +64,8 @@ class JobController extends Controller
      * @param  StoreJob  $request
      * @return Response
      */
-    // public function store(StoreJob $request)
-    public function store(Request $request)
+    public function store(StoreJob $request)
+    // public function store(Request $request)
     {
         $destination = $this->setDestination($request);
         $startTime = $request->input('startTime') . ":00";
@@ -98,7 +98,7 @@ class JobController extends Controller
         $job->type = $request->input('type'); 
         $job->destination = $destination;
         $job->user_id = 1;
-        // $job->user_id = Auth::id();
+        $job->user_id = Auth::id();
         $job->save();
 
         event(new JobSubmitted(Auth::user(), $job, true));
@@ -125,8 +125,8 @@ class JobController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function update(Request $request, $id)
-    public function update(StoreJob $request, $id)
+    public function update(Request $request, $id)
+    // public function update(StoreJob $request, $id)
     {
         
         $destination = $this->setDestination($request);
