@@ -37,7 +37,10 @@ class StoreJob extends FormRequest
             'email' => 'sometimes|required|email',
             'number' => 'sometimes|required|integer',
             'url' => 'sometimes|required|url',
-            'key' => 'sometimes|required|string',
+            'key' => 'sometimes|required',
+            'key.*' => 'string',
+            'value' => 'sometimes|required',
+            'value.*' => 'string',
             'cc' => 'email',
             'bcc' => 'email'
 
