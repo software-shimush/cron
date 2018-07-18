@@ -41,9 +41,10 @@ class jobText implements ShouldQueue
         if($nextJob && $nextJob->status !== "completed"){
             if($nextJob->status === "active"){
                 $account_sid = 'AC3d70f383f2f43e894495647ddf291c84';
-                $auth_token = '349314a355d87011ac3f0289cda5b5d5';
+            
                 // In production, these should be environment variables. E.g.:
-                // $auth_token = $_ENV["TWILIO_ACCOUNT_SID"]
+                $auth_token = $_ENV["TWILIO_ACCOUNT_SID"];
+                $account_sid  = $_ENV["TWILIO_ACCOUNT_ID"];
         
                 // A Twilio number you own with SMS capabilities
                 $twilio_number = "+12028518268";
