@@ -9,7 +9,7 @@ class JobModel extends Model
 {
     protected $table = 'job';
     // use SoftDeletes;
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
     public function getProperIntervalAttribute()
     {
         switch($this->interval_type){
