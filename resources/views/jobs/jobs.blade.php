@@ -5,7 +5,7 @@
  
 @section('content')
 <div class="container">
-    @if ($jobs)
+    @if (count($jobs) > 0)
     <div class="row justify-content-around">
         <div class="col-sm-7">
             <ul class="list-group">
@@ -18,7 +18,9 @@
         </div>
     </div>
     @else
-    <h2 class="text-primary">You currently have no scheduled jobs.</h2>
+    <div class="alert alert-info" role="alert">
+        <h3 class="text-center">You currently have no scheduled jobs</h3>
+    </div>
     @endif
 </div>
 @endsection
