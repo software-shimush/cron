@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('jobs', 'JobController');
 Route::put('jobs/{id}/edit', 'JobController@status');
+Route::get('users', 'usersController@index');
 
 
 
