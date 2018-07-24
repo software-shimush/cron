@@ -12,7 +12,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use App\Events\JobSubmitted;
 
 
-class jobText implements ShouldQueue
+class JobText implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
