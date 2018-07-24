@@ -15,7 +15,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Message\Request;
 
 
-class jobPost implements ShouldQueue 
+class JobPost implements ShouldQueue 
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected $id;

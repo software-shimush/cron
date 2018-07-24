@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Carbon\Carbon;
 use App\Jobs\JobEmail;
 use App\Jobs\JobText;
-use App\Jobs\jobPost;
+use App\Jobs\JobPost;
 class ScheduleJob
 {
     /**
